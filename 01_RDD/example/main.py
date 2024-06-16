@@ -2,11 +2,12 @@
 
 # 导入Spark的相关包
 import time
+from operator import add
 
 from pyspark import SparkConf, SparkContext
 from pyspark.storagelevel import StorageLevel
+
 from defs import context_jieba, filter_words, append_words, extract_user_and_word
-from operator import add
 
 if __name__ == '__main__':
     # 0. 初始化执行环境 构建SparkContext对象
@@ -23,7 +24,7 @@ if __name__ == '__main__':
     split_rdd.persist(StorageLevel.DISK_ONLY)
 
     # TODO: 需求1: 用户搜索的关键`词`分析
-    # 主要分析热点词
+    # 主要分析热点词1
     # 将所有的搜索内容取出
     # print(split_rdd.takeSample(True, 3))
     context_rdd = split_rdd.map(lambda x: x[2])
