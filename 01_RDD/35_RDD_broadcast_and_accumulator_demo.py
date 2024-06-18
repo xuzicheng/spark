@@ -1,16 +1,15 @@
 # coding:utf8
-import time
+
+import re
 
 from pyspark import SparkConf, SparkContext
-from pyspark.storagelevel import StorageLevel
-import re
 
 if __name__ == '__main__':
     conf = SparkConf().setAppName("test").setMaster("local[*]")
     sc = SparkContext(conf=conf)
 
     # 1. 读取数据文件
-    file_rdd = sc.textFile("../data/input/accumulator_broadcast_data.txt")
+    file_rdd = sc.textFile(r"C:\Users\xu\Pictures\hadoop\spark_learning\accumulator_broadcast_data.txt")
 
     # 特殊字符的list定义
     abnormal_char = [",", ".", "!", "#", "$", "%"]
