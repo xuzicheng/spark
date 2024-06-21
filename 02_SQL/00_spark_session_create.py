@@ -5,16 +5,16 @@ from pyspark.sql import SparkSession
 
 if __name__ == '__main__':
     # 构建SparkSession执行环境入口对象
-    spark = SparkSession.builder.\
-        appName("test").\
-        master("local[*]").\
+    spark = SparkSession.builder. \
+        appName("test"). \
+        master("local[*]"). \
         getOrCreate()
 
     # 通过SparkSession对象 获取 SparkContext对象
     sc = spark.sparkContext
 
     # SparkSQL的HelloWorld
-    df = spark.read.csv("../data/input/stu_score.txt", sep=',', header=False)
+    df = spark.read.csv(r"C:\Users\xu\Pictures\hadoop\spark_learning\stu_score.txt", sep=',', header=False)
     df2 = df.toDF("id", "name", "score")
     df2.printSchema()
     df2.show()
