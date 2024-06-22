@@ -1,21 +1,18 @@
 # coding:utf8
 
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType, StringType, IntegerType
-import pandas as pd
-
 
 if __name__ == '__main__':
     # 0. 构建执行环境入口对象SparkSession
-    spark = SparkSession.builder.\
-        appName("test").\
-        master("local[*]").\
+    spark = SparkSession.builder. \
+        appName("test"). \
+        master("local[*]"). \
         getOrCreate()
     sc = spark.sparkContext
 
-    df = spark.read.format("csv").\
-        schema("id INT, subject STRING, score INT").\
-        load("../data/input/sql/stu_score.txt")
+    df = spark.read.format("csv"). \
+        schema("id INT, subject STRING, score INT"). \
+        load(r"C:\Users\xu\Pictures\hadoop\spark_learning\stu_score.txt")
 
     # Column对象的获取
     id_column = df['id']
@@ -37,7 +34,6 @@ if __name__ == '__main__':
     # group By API
     df.groupBy("subject").count().show()
     df.groupBy(df['subject']).count().show()
-
 
     # df.groupBy API的返回值 GroupedData
     # GroupedData对象 不是DataFrame

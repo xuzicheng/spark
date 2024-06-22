@@ -1,9 +1,7 @@
 # coding:utf8
 
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType, StringType, IntegerType
-import pandas as pd
-
+from pyspark.sql.types import StructType, StringType
 
 if __name__ == '__main__':
     # 0. 构建执行环境入口对象SparkSession
@@ -17,7 +15,7 @@ if __name__ == '__main__':
     schema = StructType().add("data", StringType(), nullable=True)
     df = spark.read.format("text").\
         schema(schema=schema).\
-        load("../data/input/sql/people.txt")
+        load(r"C:\Users\xu\Pictures\hadoop\spark_learning\测试数据\sql\people.txt")
 
     df.printSchema()
     df.show()

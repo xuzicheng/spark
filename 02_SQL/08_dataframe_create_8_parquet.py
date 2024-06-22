@@ -1,9 +1,6 @@
 # coding:utf8
 
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType, StringType, IntegerType
-import pandas as pd
-
 
 if __name__ == '__main__':
     # 0. 构建执行环境入口对象SparkSession
@@ -14,7 +11,7 @@ if __name__ == '__main__':
     sc = spark.sparkContext
 
     # 读取parquet类型的文件
-    df = spark.read.format("parquet").load("../data/input/sql/users.parquet")
+    df = spark.read.format("parquet").load(r"C:\Users\xu\Pictures\hadoop\spark_learning\测试数据\sql\users.parquet")
 
     df.printSchema()
     df.show()
