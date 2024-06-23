@@ -2,10 +2,8 @@
 import time
 
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType, StringType, IntegerType
-import pandas as pd
 from pyspark.sql import functions as F
-
+from pyspark.sql.types import StructType, StringType, IntegerType
 
 if __name__ == '__main__':
     # 0. 构建执行环境入口对象SparkSession
@@ -74,7 +72,7 @@ if __name__ == '__main__':
             F.max("rank").alias("max_rank")
         ).show()
 
-    # TODO 6: 查询评分超过100次的电影, 的平均分 排名 TOP10
+    # TODO 6: 查询评分超过100次的电影, 的平均分 排名 Top10
     df.groupBy("movie_id").\
         agg(
             F.count("movie_id").alias("cnt"),
